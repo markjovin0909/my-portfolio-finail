@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { id: 'resume', label: 'Resume' },
-  { id: 'education', label: 'Education' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'laboratory', label: 'Laboratory' },
-  { id: 'contact', label: 'Contact' },
+  { id: "resume", label: "Resume" },
+  { id: "education", label: "Education" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "laboratory", label: "Laboratory" },
+  { id: "contact", label: "Contact" },
 ];
 
 export const Navigation = () => {
@@ -20,14 +20,14 @@ export const Navigation = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
       setIsOpen(false);
     }
   };
@@ -35,7 +35,9 @@ export const Navigation = () => {
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-card/90 backdrop-blur-lg shadow-[var(--shadow-deep)]' : 'bg-transparent'
+        isScrolled
+          ? "bg-card/90 backdrop-blur-lg shadow-[var(--shadow-deep)]"
+          : "bg-transparent"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -45,12 +47,12 @@ export const Navigation = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <motion.button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="text-xl md:text-2xl font-cinzel font-bold text-primary hover:text-accent transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            ⚰️ The Graveyard
+            ⚰️ Mark Jovin Molina
           </motion.button>
 
           {/* Desktop Navigation */}
@@ -84,7 +86,7 @@ export const Navigation = () => {
         <motion.div
           className="md:hidden bg-card/95 backdrop-blur-lg border-t border-border"
           initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
+          animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
         >
           <div className="container mx-auto px-4 py-4 space-y-2">

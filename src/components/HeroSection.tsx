@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { ChevronDown } from 'lucide-react';
-import heroImage from '@/assets/hero-graveyard.jpg';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { ChevronDown } from "lucide-react";
+import heroImage from "@/assets/hero-graveyard.jpg";
 
 interface HeroSectionProps {
   onEnter: () => void;
@@ -27,7 +27,7 @@ export const HeroSection = ({ onEnter }: HeroSectionProps) => {
       transition={{ duration: 0.8 }}
     >
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
@@ -50,16 +50,17 @@ export const HeroSection = ({ onEnter }: HeroSectionProps) => {
           animate={{ scale: 1 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          The Graveyard
+          Mark Jovin Molina
         </motion.h1>
-        
+
         <motion.p
           className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 0.8 }}
         >
-          Enter if you dare... A portfolio of code, creativity, and spectral innovation
+          Enter if you dare... A portfolio of code, creativity, and spectral
+          innovation
         </motion.p>
 
         <motion.div
@@ -73,7 +74,7 @@ export const HeroSection = ({ onEnter }: HeroSectionProps) => {
             disabled={isEntering}
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-lg px-8 py-6 rounded-lg shadow-[var(--shadow-purple)] transition-all duration-300 hover:shadow-[var(--shadow-amber)] hover:scale-105"
           >
-            {isEntering ? 'Opening Gate...' : 'Enter the Graveyard'}
+            {isEntering ? "Opening Gate..." : "Enter the Graveyard"}
           </Button>
         </motion.div>
 

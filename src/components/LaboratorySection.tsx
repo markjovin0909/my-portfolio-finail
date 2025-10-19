@@ -1,47 +1,79 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Card } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { ExternalLink, Beaker } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import lab1 from '@/assets/lab1.jpg';
-import lab2 from '@/assets/lab2.jpg';
-import lab3 from '@/assets/lab3.jpg';
-import laboratoryBg from '@/assets/laboratory-occult.jpg';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Card } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { ExternalLink, Beaker } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import activity1 from "@/assets/Activity1.jpeg";
+import activity2 from "@/assets/Activity2.jpeg";
+import activity3 from "@/assets/Activity3.jpeg";
+import activity4 from "@/assets/Activity4.jpeg";
+import activity5 from "@/assets/Activity5.jpeg";
+import laboratoryBg from "@/assets/laboratory-occult.jpg";
+import { Github } from "lucide-react";
 
 const labs = [
   {
-    title: 'Data Visualization Dashboard',
-    description: 'Interactive analytics dashboard with real-time data updates and custom chart components.',
-    image: lab1,
-    tech: ['React', 'D3.js', 'Recharts', 'WebSocket'],
-    demoUrl: 'https://example.com/lab1'
+    title: "Activity 1",
+    description:
+      "An interactive web card project demonstrating hover-based animations and dynamic text reveal effects. This project focuses on creating an interactive web card that reveals hidden text when hovered over. It highlights precision in layout design, CSS transitions, and attention to user experience. The activity helped enhance my understanding of front-end interactivity and clean code structure.",
+    image: activity1,
+    tech: ["HTML", "CSS"],
+    githubUrl: "https://github.com/markjovin0909/Activity1",
   },
   {
-    title: 'Component Library System',
-    description: 'Comprehensive UI component library with documentation and live code playground.',
-    image: lab2,
-    tech: ['React', 'Storybook', 'TypeScript', 'CSS Modules'],
-    demoUrl: 'https://example.com/lab2'
+    title: "Activity 2",
+    description:
+      "A hands-on HTML exercise showcasing proper use of semantic tags and web structure best practices. This project aimed to strengthen understanding of HTML semantics and structure. It involved using various tags and elements to build a functional and well-organized web layout, reinforcing the importance of clean and accessible code for effective web development.",
+    image: activity2,
+    tech: ["HTML", "CSS", "JavaScript"],
+    githubUrl: "https://github.com/markjovin0909/Activity2",
   },
   {
-    title: 'API Testing Interface',
-    description: 'Developer tool for testing REST and GraphQL APIs with request/response visualization.',
-    image: lab3,
-    tech: ['React', 'GraphQL', 'Monaco Editor', 'Axios'],
-    demoUrl: 'https://example.com/lab3'
-  }
+    title: "Activity 3",
+    description:
+      "A web page with a toggle feature that dynamically displays hidden content upon button interaction. This task involved building a functional toggle button that reveals or hides additional content when clicked. It demonstrated practical use of JavaScript for interactivity and DOM manipulation while focusing on clean, maintainable code and intuitive user design.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    image: activity3,
+    tech: ["HTML", "CSS", "JavaScript"],
+    githubUrl: "https://github.com/markjovin0909/Activity3",
+  },
+  {
+    title: "Activity 4",
+    description:
+      "A light and dark mode toggle feature designed to enhance user experience and visual comfort. In this project, I implemented a theme toggle system allowing users to switch between light and dark modes. It improved understanding of CSS variables, JavaScript event handling, and responsive design principles for modern web applications.",
+    image: activity4,
+    tech: ["HTML", "CSS", "JavaScript"],
+    githubUrl: "https://github.com/markjovin0909/Activity4",
+  },
+  {
+    title: "Activity 5",
+    description:
+      "A to-do list application for managing daily tasks with options to add, complete, and clear activities. This project focused on building a functional to-do list app where users can add, mark as complete, or clear tasks. It demonstrated practical JavaScript skills such as event handling, array management, and DOM manipulation, along with a focus on user-friendly design and functionality.",
+    image: activity5,
+    tech: ["HTML", "CSS", "JavaScript"],
+    githubUrl: "https://github.com/markjovin0909/Activity5",
+  },
 ];
 
 export const LaboratorySection = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
-  const [selectedLab, setSelectedLab] = useState<typeof labs[0] | null>(null);
+  const [selectedLab, setSelectedLab] = useState<(typeof labs)[0] | null>(null);
 
   return (
-    <section id="laboratory" className="relative min-h-screen py-20 px-4" ref={ref}>
+    <section
+      id="laboratory"
+      className="relative min-h-screen py-20 px-4"
+      ref={ref}
+    >
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${laboratoryBg})` }}
       >
@@ -89,7 +121,9 @@ export const LaboratorySection = () => {
                       <h3 className="text-lg font-cinzel font-semibold mb-2 text-primary group-hover:text-accent transition-colors line-clamp-2">
                         {lab.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{lab.description}</p>
+                      <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+                        {lab.description}
+                      </p>
                       <div className="flex flex-wrap gap-1 mb-3">
                         {lab.tech.slice(0, 3).map((tech, i) => (
                           <span
@@ -100,10 +134,20 @@ export const LaboratorySection = () => {
                           </span>
                         ))}
                       </div>
-                      <Button size="sm" variant="outline" className="w-full" asChild onClick={(e) => e.stopPropagation()}>
-                        <a href={lab.demoUrl} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="w-3 h-3 mr-2" />
-                          View Demo
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="w-full"
+                        asChild
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <a
+                          href={lab.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Github className="w-4 h-4 mr-2" />
+                          View Source Code
                         </a>
                       </Button>
                     </div>
@@ -144,10 +188,14 @@ export const LaboratorySection = () => {
                   ))}
                 </div>
               </div>
-              <Button className="w-full" asChild>
-                <a href={selectedLab.demoUrl} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  View Live Demo
+              <Button variant="outline" className="w-full" asChild>
+                <a
+                  href={selectedLab.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github className="w-4 h-4 mr-2" />
+                  View Source Code
                 </a>
               </Button>
             </div>

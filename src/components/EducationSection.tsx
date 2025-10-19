@@ -1,33 +1,46 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Card } from '@/components/ui/card';
-import { GraduationCap, Award } from 'lucide-react';
-import educationBg from '@/assets/education-library.jpg';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Card } from "@/components/ui/card";
+import { GraduationCap, Award } from "lucide-react";
+import educationBg from "@/assets/education-library.jpg";
 
 const education = [
   {
-    degree: 'Master of Science in Computer Science',
-    institution: 'University of Technology',
-    period: '2018 - 2020',
-    description: 'Specialized in Web Technologies and Human-Computer Interaction',
-    achievements: ['GPA: 3.9/4.0', 'Thesis: Interactive 3D Web Experiences']
+    degree: "Elementary Education",
+    institution: "Bansang Elementary School",
+    period: "2010 - 2017",
+    description:
+      "Specialized in being the most behaved student in the entire elementary school.",
+    achievements: ["GPA: 75", "Graduated with Most Behaved Award"],
   },
   {
-    degree: 'Bachelor of Science in Software Engineering',
-    institution: 'State University',
-    period: '2014 - 2018',
-    description: 'Focus on Software Development and Database Systems',
-    achievements: ['Summa Cum Laude', 'Dean\'s List all semesters']
-  }
+    degree: "High School Education",
+    institution: "Nazareth High School",
+    period: "2017 - 2021",
+    description: "Master in Cutting Classes and Making Excuses.",
+    achievements: ["GPA: 75", "Graduated with Most Excuses Award"],
+  },
+  {
+    degree: "Senior High School Education",
+    institution: "Mabuhay National High School",
+    period: "2021 - 2023",
+    description:
+      "Computer Science and Servicing student master in disassembling computers.",
+    achievements: ["GPA: 75", "Graduated with Most Skilled in Computer Award"],
+  },
 ];
 
 export const EducationSection = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
-    <section id="education" className="relative min-h-screen py-20 px-4" ref={ref}>
+    <section
+      id="education"
+      className="relative min-h-screen py-20 px-4"
+      ref={ref}
+    >
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${educationBg})` }}
       >
@@ -68,13 +81,22 @@ export const EducationSection = () => {
                         <h3 className="text-xl font-cinzel font-semibold text-primary">
                           {edu.degree}
                         </h3>
-                        <span className="text-sm text-muted-foreground">{edu.period}</span>
+                        <span className="text-sm text-muted-foreground">
+                          {edu.period}
+                        </span>
                       </div>
-                      <p className="text-lg font-semibold mb-2">{edu.institution}</p>
-                      <p className="text-muted-foreground mb-4">{edu.description}</p>
+                      <p className="text-lg font-semibold mb-2">
+                        {edu.institution}
+                      </p>
+                      <p className="text-muted-foreground mb-4">
+                        {edu.description}
+                      </p>
                       <div className="flex flex-wrap gap-2">
                         {edu.achievements.map((achievement, i) => (
-                          <div key={i} className="flex items-center gap-1 text-sm">
+                          <div
+                            key={i}
+                            className="flex items-center gap-1 text-sm"
+                          >
                             <Award className="w-4 h-4 text-accent" />
                             <span>{achievement}</span>
                           </div>

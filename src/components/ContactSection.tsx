@@ -1,23 +1,23 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { Send } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
-import contactBg from '@/assets/contact-portal.jpg';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Send } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import contactBg from "@/assets/contact-portal.jpg";
 
 export const ContactSection = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -25,11 +25,15 @@ export const ContactSection = () => {
     setIsSubmitting(true);
 
     // Validation
-    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+    if (
+      !formData.name.trim() ||
+      !formData.email.trim() ||
+      !formData.message.trim()
+    ) {
       toast({
         title: "Error",
         description: "Please fill in all fields",
-        variant: "destructive"
+        variant: "destructive",
       });
       setIsSubmitting(false);
       return;
@@ -39,7 +43,7 @@ export const ContactSection = () => {
       toast({
         title: "Error",
         description: "Please enter a valid email address",
-        variant: "destructive"
+        variant: "destructive",
       });
       setIsSubmitting(false);
       return;
@@ -51,22 +55,28 @@ export const ContactSection = () => {
         title: "Message Sent! 👻",
         description: "Thank you for reaching out. I'll get back to you soon!",
       });
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: "", email: "", message: "" });
       setIsSubmitting(false);
     }, 1000);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
   return (
-    <section id="contact" className="relative min-h-screen py-20 px-4" ref={ref}>
+    <section
+      id="contact"
+      className="relative min-h-screen py-20 px-4"
+      ref={ref}
+    >
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${contactBg})` }}
       >
@@ -112,7 +122,7 @@ export const ContactSection = () => {
                   type="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="your.email@example.com"
+                  placeholder="markjovin0909@gmail.com"
                   className="bg-background/50 border-primary/20 focus:border-primary"
                   disabled={isSubmitting}
                 />
@@ -139,7 +149,7 @@ export const ContactSection = () => {
                 disabled={isSubmitting}
               >
                 <Send className="w-5 h-5 mr-2" />
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </Card>
@@ -151,9 +161,12 @@ export const ContactSection = () => {
             transition={{ delay: 0.4 }}
           >
             <p className="text-muted-foreground mb-4">
-              Or reach out directly at{' '}
-              <a href="mailto:your.email@example.com" className="text-primary hover:text-accent transition-colors">
-                your.email@example.com
+              Or reach out directly at{" "}
+              <a
+                href="mailto:markjovin0909@gmail.com"
+                className="text-primary hover:text-accent transition-colors"
+              >
+                markjovin0909@gmail.com
               </a>
             </p>
           </motion.div>

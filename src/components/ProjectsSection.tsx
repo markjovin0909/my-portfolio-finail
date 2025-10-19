@@ -1,43 +1,59 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { ExternalLink, Github, X } from 'lucide-react';
-import project1 from '@/assets/project1.jpg';
-import project2 from '@/assets/project2.jpg';
-import projectsBg from '@/assets/projects-workshop.jpg';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { ExternalLink, Github, X } from "lucide-react";
+import project1 from "@/assets/ArnieShop.jpeg";
+import project2 from "@/assets/handyhub.jpeg";
+import projectsBg from "@/assets/projects-workshop.jpg";
 
 const projects = [
   {
-    title: 'Spectral E-Commerce Platform',
-    description: 'A haunting shopping experience with 3D product visualization and real-time inventory management.',
-    fullDescription: 'Built a complete e-commerce solution featuring 3D product previews using Three.js, real-time inventory updates with WebSocket connections, secure payment processing with Stripe, and an admin dashboard for managing products and orders. The platform handles 10,000+ daily active users with 99.9% uptime.',
+    title: "ArnieShop Online Store",
+    description:
+      "A convenient e-commerce platform designed for local sari-sari stores to sell products online and manage daily sales efficiently.",
+    fullDescription:
+      "Developed a user-friendly sari-sari store e-commerce platform that allows customers to browse and purchase everyday household items online. Features include inventory tracking, product categorization, order management, and simple payment handling. The system helps small store owners digitize their operations and reach more local customers while maintaining ease of use and reliability.",
     image: project1,
-    tech: ['React', 'Three.js', 'Node.js', 'PostgreSQL', 'Stripe', 'AWS'],
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com/yourusername/project1'
+    tech: [".Net Windows Form", "Entity Framework", "Guna UI", "MySQL"],
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/markjovin0909/ArnieShopFinal",
   },
+
   {
-    title: 'Phantom Task Manager',
-    description: 'A collaborative project management tool with ethereal real-time updates and team analytics.',
-    fullDescription: 'Developed a comprehensive task management system with real-time collaboration features, drag-and-drop kanban boards, team analytics dashboard, automated notifications, and integrations with Slack and email. Supports unlimited projects and team members with role-based access control.',
+    title: "HandyHub",
+    description:
+      "A collaborative project management tool with ethereal real-time updates and team analytics.",
+    fullDescription:
+      "Developed a comprehensive task management system with real-time collaboration features, drag-and-drop kanban boards, team analytics dashboard, automated notifications, and integrations with Slack and email. Supports unlimited projects and team members with role-based access control.",
     image: project2,
-    tech: ['React', 'TypeScript', 'Express', 'MongoDB', 'Socket.io', 'Docker'],
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com/yourusername/project2'
-  }
+    tech: ["Laravel", "Livewire", "Bootsrap", "Mysql"],
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/markjovin0909/HandyHub_Project",
+  },
 ];
 
 export const ProjectsSection = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
-  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [selectedProject, setSelectedProject] = useState<
+    (typeof projects)[0] | null
+  >(null);
 
   return (
-    <section id="projects" className="relative min-h-screen py-20 px-4" ref={ref}>
+    <section
+      id="projects"
+      className="relative min-h-screen py-20 px-4"
+      ref={ref}
+    >
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${projectsBg})` }}
       >
@@ -82,7 +98,9 @@ export const ProjectsSection = () => {
                       <h3 className="text-2xl font-cinzel font-semibold mb-3 text-primary group-hover:text-accent transition-colors">
                         {project.title}
                       </h3>
-                      <p className="text-muted-foreground mb-4">{project.description}</p>
+                      <p className="text-muted-foreground mb-4">
+                        {project.description}
+                      </p>
                       <div className="flex flex-wrap gap-2 mb-4">
                         {project.tech.map((tech, i) => (
                           <span
@@ -94,14 +112,18 @@ export const ProjectsSection = () => {
                         ))}
                       </div>
                       <div className="flex gap-3">
-                        <Button size="sm" variant="outline" className="flex-1" asChild>
-                          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            Live Demo
-                          </a>
-                        </Button>
-                        <Button size="sm" variant="outline" className="flex-1" asChild>
-                          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="flex-1"
+                          asChild
+                        >
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                          >
                             <Github className="w-4 h-4 mr-2" />
                             Code
                           </a>
@@ -117,7 +139,10 @@ export const ProjectsSection = () => {
       </div>
 
       {/* Project Modal */}
-      <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
+      <Dialog
+        open={!!selectedProject}
+        onOpenChange={() => setSelectedProject(null)}
+      >
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="text-3xl font-cinzel text-primary">
@@ -135,7 +160,9 @@ export const ProjectsSection = () => {
                 {selectedProject.fullDescription}
               </p>
               <div>
-                <h4 className="text-lg font-semibold mb-3">Technologies Used</h4>
+                <h4 className="text-lg font-semibold mb-3">
+                  Technologies Used
+                </h4>
                 <div className="flex flex-wrap gap-2">
                   {selectedProject.tech.map((tech, i) => (
                     <span
@@ -148,14 +175,12 @@ export const ProjectsSection = () => {
                 </div>
               </div>
               <div className="flex gap-4 pt-4">
-                <Button className="flex-1" asChild>
-                  <a href={selectedProject.liveUrl} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    View Live Project
-                  </a>
-                </Button>
                 <Button variant="outline" className="flex-1" asChild>
-                  <a href={selectedProject.githubUrl} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={selectedProject.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Github className="w-4 h-4 mr-2" />
                     View Source Code
                   </a>
