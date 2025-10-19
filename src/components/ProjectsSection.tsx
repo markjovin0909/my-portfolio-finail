@@ -7,6 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { ExternalLink, Github, X } from 'lucide-react';
 import project1 from '@/assets/project1.jpg';
 import project2 from '@/assets/project2.jpg';
+import projectsBg from '@/assets/projects-workshop.jpg';
 
 const projects = [
   {
@@ -34,8 +35,19 @@ export const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
   return (
-    <section id="projects" className="min-h-screen py-20 px-4" ref={ref}>
-      <div className="container mx-auto max-w-6xl">
+    <section id="projects" className="relative min-h-screen py-20 px-4" ref={ref}>
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${projectsBg})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background/90" />
+      </div>
+
+      {/* Fog Effect */}
+      <div className="absolute inset-0 fog-overlay" />
+
+      <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}

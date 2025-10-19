@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import contactBg from '@/assets/contact-portal.jpg';
 
 export const ContactSection = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -63,8 +64,19 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="min-h-screen py-20 px-4" ref={ref}>
-      <div className="container mx-auto max-w-4xl">
+    <section id="contact" className="relative min-h-screen py-20 px-4" ref={ref}>
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${contactBg})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background/90" />
+      </div>
+
+      {/* Fog Effect */}
+      <div className="absolute inset-0 fog-overlay" />
+
+      <div className="container mx-auto max-w-4xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}

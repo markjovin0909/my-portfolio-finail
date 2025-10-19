@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import lab1 from '@/assets/lab1.jpg';
 import lab2 from '@/assets/lab2.jpg';
 import lab3 from '@/assets/lab3.jpg';
+import laboratoryBg from '@/assets/laboratory-occult.jpg';
 
 const labs = [
   {
@@ -38,8 +39,19 @@ export const LaboratorySection = () => {
   const [selectedLab, setSelectedLab] = useState<typeof labs[0] | null>(null);
 
   return (
-    <section id="laboratory" className="min-h-screen py-20 px-4" ref={ref}>
-      <div className="container mx-auto max-w-6xl">
+    <section id="laboratory" className="relative min-h-screen py-20 px-4" ref={ref}>
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${laboratoryBg})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background/90" />
+      </div>
+
+      {/* Fog Effect */}
+      <div className="absolute inset-0 fog-overlay" />
+
+      <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
