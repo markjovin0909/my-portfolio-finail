@@ -1,12 +1,35 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from 'react';
+import { HeroSection } from '@/components/HeroSection';
+import { Navigation } from '@/components/Navigation';
+import { ResumeSection } from '@/components/ResumeSection';
+import { EducationSection } from '@/components/EducationSection';
+import { ExperienceSection } from '@/components/ExperienceSection';
+import { ProjectsSection } from '@/components/ProjectsSection';
+import { LaboratorySection } from '@/components/LaboratorySection';
+import { ContactSection } from '@/components/ContactSection';
+import { Footer } from '@/components/Footer';
 
 const Index = () => {
+  const [hasEntered, setHasEntered] = useState(false);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="relative">
+      {!hasEntered ? (
+        <HeroSection onEnter={() => setHasEntered(true)} />
+      ) : (
+        <>
+          <Navigation />
+          <main className="relative">
+            <ResumeSection />
+            <EducationSection />
+            <ExperienceSection />
+            <ProjectsSection />
+            <LaboratorySection />
+            <ContactSection />
+          </main>
+          <Footer />
+        </>
+      )}
     </div>
   );
 };
